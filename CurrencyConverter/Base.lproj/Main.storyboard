@@ -1,24 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--CurrencyVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CurrencyVC" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Converter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciV-gq-c2K">
+                                <rect key="frame" x="69" y="68" width="276" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="5mL-4o-MEN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency base : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-vq-JwF">
+                                <rect key="frame" x="0.0" y="333" width="414" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-e7-rjS">
+                                <rect key="frame" x="0.0" y="117" width="414" height="216"/>
+                            </pickerView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="top" secondItem="ciV-gq-c2K" secondAttribute="bottom" constant="8" id="V4b-Fi-f92"/>
+                            <constraint firstItem="JLk-vq-JwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yfd-nf-81g"/>
+                            <constraint firstItem="JLk-vq-JwF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cEx-Yl-6Sv"/>
+                            <constraint firstItem="ciV-gq-c2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ck3-10-zqB"/>
+                            <constraint firstItem="ciV-gq-c2K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="egY-aS-zdM"/>
+                            <constraint firstItem="JLk-vq-JwF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="g1G-MB-TWS"/>
+                            <constraint firstItem="JLk-vq-JwF" firstAttribute="top" secondItem="FcZ-e7-rjS" secondAttribute="bottom" id="hUa-KZ-bnF"/>
+                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="paZ-4h-7ci"/>
+                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tL7-hZ-pST"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="currencyBaseLbl" destination="JLk-vq-JwF" id="JfD-nd-2sd"/>
+                        <outlet property="currencyPicker" destination="FcZ-e7-rjS" id="ylW-Zl-p1e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="57.971014492753625" y="32.8125"/>
         </scene>
     </scenes>
 </document>
