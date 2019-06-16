@@ -12,7 +12,7 @@ import Foundation
 class Currency : NSObject {
     
     var base : String = ""
-    var rates : Int = 0
+    var rates : String = ""
     var date : String = ""
     
     
@@ -49,4 +49,154 @@ class Currency : NSObject {
     var CNY : Double = 0.0
     var SEK : Double = 0.0
     var EUR : Double = 0.0
+    
 }
+    
+    
+    func currencyFinder (currency : String) -> String{
+        switch currency {
+        case "---":
+            return "UNKNOW"
+        case "AUD":
+            return "AUD"
+        case "BGN":
+            return "BGN"
+        case "BRL":
+            return "BRL"
+        case "CAO":
+            return "CAO"
+        case "CHF":
+            return "CHF"
+        case "CNY":
+            return "CNY"
+        case "CZK":
+            return "CZK"
+        case "DKK":
+            return "DKK"
+        case "EUR":
+            return "EUR"
+        case "GBP":
+            return "GBP"
+        case "HKD":
+            return "HKD"
+        case "HRK":
+            return "HRK"
+        case "HUF":
+            return "HUF"
+        case "IDR":
+            return "IDR"
+        case "ILS":
+            return "ILS"
+        case "INR":
+            return "INR"
+        case "ISK":
+            return "ISK"
+        case "JPY":
+            return "JPY"
+        case "KRW":
+            return "KRW"
+        case "MXN":
+            return "MXN"
+        case "MYR":
+            return "MYR"
+        case "NOK":
+            return "NOK"
+        case "NZD":
+            return "NZD"
+        case "PHP":
+            return "PHP"
+        case "PLN":
+            return "PLN"
+        case "RON":
+            return "RON"
+        case "RUB":
+            return "RUB"
+        case "SEK":
+            return "SEK"
+        case "SGD":
+            return "SGD"
+        case "TRY":
+            return "TRY"
+        case "USD":
+            return "USD"
+        case "ZAR":
+            return "ZAR"
+        default:
+            return "unknow"
+        }
+    }
+
+
+func currencyFlag (currency : String) -> String{
+    switch currency {
+    case "---":
+        return "UNKNOW"
+    case "AUD":
+        return "AUD"
+    case "BGN":
+        return "BGN"
+    case "BRL":
+        return "BRL"
+    case "CAO":
+        return "CAO"
+    case "CHF":
+        return "CHF"
+    case "CNY":
+        return "CNY"
+    case "CZK":
+        return "CZK"
+    case "DKK":
+        return "DKK"
+    case "EUR":
+        return "EUR"
+    case "GBP":
+        return "GBP"
+    case "HKD":
+        return "HKD"
+    case "HRK":
+        return "HRK"
+    case "HUF":
+        return "HUF"
+    case "IDR":
+        return "IDR"
+    case "ILS":
+        return "ILS"
+    case "INR":
+        return "INR"
+    case "ISK":
+        return "ISK"
+    case "JPY":
+        return "JPY"
+    case "KRW":
+        return "KRW"
+    case "MXN":
+        return "MXN"
+    case "MYR":
+        return "MYR"
+    case "NOK":
+        return "NOK"
+    case "NZD":
+        return "NZD"
+    case "PHP":
+        return "PHP"
+    case "PLN":
+        return "PLN"
+    case "RON":
+        return "RON"
+    case "RUB":
+        return "RUB"
+    case "SEK":
+        return "SEK"
+    case "SGD":
+        return "SGD"
+    case "TRY":
+        return "TRY"
+    case "USD":
+        return "USD"
+    case "ZAR":
+        return "ZAR"
+    default:
+        return "unknow"
+    }
+}
+

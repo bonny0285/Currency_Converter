@@ -16,6 +16,7 @@
 		B42E029722B57FC60070C799 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42E029522B57FC60070C799 /* LaunchScreen.storyboard */; };
 		B42E02A222B57FC60070C799 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E02A122B57FC60070C799 /* CurrencyConverterTests.swift */; };
 		B42E02B022B5821F0070C799 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E02AF22B5821F0070C799 /* CurrencyModel.swift */; };
+		B42E02B222B5AA450070C799 /* currencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E02B122B5AA450070C799 /* currencyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B42E02A122B57FC60070C799 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		B42E02A322B57FC60070C799 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B42E02AF22B5821F0070C799 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		B42E02B122B5AA450070C799 /* currencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		B42E02AD22B581D80070C799 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B42E02B122B5AA450070C799 /* currencyCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B42E02B222B5AA450070C799 /* currencyCell.swift in Sources */,
 				B42E028F22B57FC50070C799 /* CurrencyVC.swift in Sources */,
 				B42E028D22B57FC50070C799 /* AppDelegate.swift in Sources */,
 				B42E02B022B5821F0070C799 /* CurrencyModel.swift in Sources */,
