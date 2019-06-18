@@ -18,31 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroung" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-K8-KoV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandiera-unione-europea-orig" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-K8-KoV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Converter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciV-gq-c2K">
-                                <rect key="frame" x="69" y="68" width="276" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Euro Convert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciV-gq-c2K">
+                                <rect key="frame" x="114" y="68" width="186.5" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="5mL-4o-MEN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency base : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLk-vq-JwF">
-                                <rect key="frame" x="0.0" y="333" width="414" height="23.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcZ-e7-rjS">
-                                <rect key="frame" x="0.0" y="117" width="414" height="216"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </pickerView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5G-ik-dYi">
-                                <rect key="frame" x="0.0" y="426.5" width="414" height="469.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5G-ik-dYi">
+                                <rect key="frame" x="0.0" y="325" width="414" height="571"/>
+                                <color key="backgroundColor" red="0.19614437849999999" green="0.6862271002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="currencyCell" rowHeight="100" id="gmT-aC-cde" customClass="currencyCell" customModule="CurrencyConverter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
@@ -51,25 +41,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency base : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-rO-EIN">
-                                                    <rect key="frame" x="143" y="38" width="128.5" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency base : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-rO-EIN">
+                                                    <rect key="frame" x="143" y="38" width="251" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VyZ-dX-yjO">
                                                     <rect key="frame" x="20" y="11" width="96" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="78" id="Fp6-yh-v6y"/>
+                                                        <constraint firstAttribute="width" constant="96" id="Xuy-TG-lTn"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qO4-rO-EIN" firstAttribute="centerX" secondItem="AbZ-DC-2jH" secondAttribute="centerX" id="Qnm-1q-tjj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qO4-rO-EIN" secondAttribute="trailing" id="NjN-Y8-14h"/>
                                                 <constraint firstItem="VyZ-dX-yjO" firstAttribute="leading" secondItem="AbZ-DC-2jH" secondAttribute="leadingMargin" id="ZO8-ef-Y7o"/>
-                                                <constraint firstItem="qO4-rO-EIN" firstAttribute="centerY" secondItem="AbZ-DC-2jH" secondAttribute="centerY" id="fac-gs-Eza"/>
-                                                <constraint firstItem="qO4-rO-EIN" firstAttribute="leading" secondItem="VyZ-dX-yjO" secondAttribute="trailing" constant="27" id="oon-Cx-20A"/>
+                                                <constraint firstItem="qO4-rO-EIN" firstAttribute="top" secondItem="AbZ-DC-2jH" secondAttribute="topMargin" constant="27" id="fyn-kM-dmw"/>
+                                                <constraint firstItem="qO4-rO-EIN" firstAttribute="leading" secondItem="VyZ-dX-yjO" secondAttribute="trailing" constant="27" id="l91-eL-fIV"/>
                                                 <constraint firstItem="VyZ-dX-yjO" firstAttribute="top" secondItem="AbZ-DC-2jH" secondAttribute="topMargin" id="uZk-Ob-VRl"/>
                                                 <constraint firstItem="VyZ-dX-yjO" firstAttribute="bottom" secondItem="AbZ-DC-2jH" secondAttribute="bottomMargin" id="uhg-Ce-zTn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qO4-rO-EIN" secondAttribute="bottom" constant="27" id="z1J-4c-Zaf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.19614437849999999" green="0.6862271002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="currencyImage" destination="VyZ-dX-yjO" id="FoW-v2-c0m"/>
                                             <outlet property="currencyLbl" destination="qO4-rO-EIN" id="N1Y-UZ-DYg"/>
@@ -78,41 +74,51 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Valuta da converture" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vxy-SQ-9NL">
-                                <rect key="frame" x="0.0" y="376.5" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="136" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9Ch-Qf-eKT"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-WO-R7z">
+                                <rect key="frame" x="0.0" y="166" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wcy-va-g10"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Press to Convert">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="convertBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ol7-Vg-8uj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2mj-K8-KoV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0OX-SX-I1j"/>
                             <constraint firstItem="2mj-K8-KoV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2NY-75-4IE"/>
                             <constraint firstItem="Vxy-SQ-9NL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4d5-Re-Flb"/>
-                            <constraint firstItem="l5G-ik-dYi" firstAttribute="top" secondItem="Vxy-SQ-9NL" secondAttribute="bottom" constant="20" id="94L-kh-X4k"/>
+                            <constraint firstItem="l5G-ik-dYi" firstAttribute="top" secondItem="aDI-WO-R7z" secondAttribute="bottom" constant="129" id="4nt-2R-epH"/>
+                            <constraint firstItem="aDI-WO-R7z" firstAttribute="top" secondItem="Vxy-SQ-9NL" secondAttribute="bottom" id="6Ze-GP-naG"/>
+                            <constraint firstItem="l5G-ik-dYi" firstAttribute="top" secondItem="2mj-K8-KoV" secondAttribute="bottom" id="BXK-gS-drv"/>
                             <constraint firstAttribute="bottom" secondItem="l5G-ik-dYi" secondAttribute="bottom" id="Etv-zl-yFQ"/>
-                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="top" secondItem="ciV-gq-c2K" secondAttribute="bottom" constant="8" id="V4b-Fi-f92"/>
-                            <constraint firstItem="JLk-vq-JwF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yfd-nf-81g"/>
-                            <constraint firstItem="JLk-vq-JwF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cEx-Yl-6Sv"/>
                             <constraint firstItem="ciV-gq-c2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ck3-10-zqB"/>
                             <constraint firstItem="Vxy-SQ-9NL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="e0T-HW-ghP"/>
                             <constraint firstItem="ciV-gq-c2K" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="egY-aS-zdM"/>
-                            <constraint firstItem="JLk-vq-JwF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="g1G-MB-TWS"/>
-                            <constraint firstItem="JLk-vq-JwF" firstAttribute="top" secondItem="FcZ-e7-rjS" secondAttribute="bottom" id="hUa-KZ-bnF"/>
-                            <constraint firstAttribute="bottom" secondItem="2mj-K8-KoV" secondAttribute="bottom" id="jDp-te-oxK"/>
-                            <constraint firstItem="Vxy-SQ-9NL" firstAttribute="top" secondItem="JLk-vq-JwF" secondAttribute="bottom" constant="20" id="mSX-WK-Mr9"/>
-                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="paZ-4h-7ci"/>
+                            <constraint firstItem="Vxy-SQ-9NL" firstAttribute="top" secondItem="ciV-gq-c2K" secondAttribute="bottom" constant="27" id="g7A-m4-lAw"/>
+                            <constraint firstItem="aDI-WO-R7z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="j05-Fj-a0b"/>
+                            <constraint firstItem="aDI-WO-R7z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pwN-eE-SRr"/>
                             <constraint firstItem="l5G-ik-dYi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sTM-br-BtP"/>
                             <constraint firstItem="l5G-ik-dYi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tHc-ZW-6Vj"/>
-                            <constraint firstItem="FcZ-e7-rjS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tL7-hZ-pST"/>
                             <constraint firstItem="l5G-ik-dYi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="x61-dw-wZD"/>
                             <constraint firstItem="2mj-K8-KoV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xdi-Q3-Elq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="currencyBaseLbl" destination="JLk-vq-JwF" id="JfD-nd-2sd"/>
-                        <outlet property="currencyPicker" destination="FcZ-e7-rjS" id="ylW-Zl-p1e"/>
                         <outlet property="currencyTableView" destination="l5G-ik-dYi" id="fse-Ld-mZE"/>
                         <outlet property="valutaDaConvertitreTxt" destination="Vxy-SQ-9NL" id="zbX-ec-cfy"/>
                     </connections>
@@ -123,6 +129,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backgroung" width="2151" height="1394"/>
+        <image name="bandiera-unione-europea-orig" width="1697" height="1131"/>
     </resources>
 </document>

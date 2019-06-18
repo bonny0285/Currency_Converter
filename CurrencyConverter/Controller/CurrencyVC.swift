@@ -16,12 +16,13 @@ class CurrencyVC: UIViewController {
     let currency = Currency()
     let MY_URL = "https://api.exchangeratesapi.io/latest?"
     var valuta : String = ""
-    var myCurrency : [Double] = []
+    var myCurrencyName : [String] = []
+    var myCurrencyRates : [Double] = []
     var myCurrencyDict : [String : Double] = [:]
+    var importo : Double = 0.0
     
     
     @IBOutlet weak var valutaDaConvertitreTxt: UITextField!
-    @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var currencyBaseLbl: UILabel!
     @IBOutlet weak var currencyTableView: UITableView!
     
@@ -31,34 +32,28 @@ class CurrencyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyPicker.delegate = self
-        currencyPicker.dataSource = self
+
         currencyTableView.dataSource = self
         currencyTableView.delegate = self
         currencyTableView.reloadData()
-        //startJSON()
-        // Do any additional setup after loading the view.
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         currencyTableView.delegate = self
         currencyTableView.dataSource = self
-        tapGestureRecognize()
     }
     
     
-//    func startJSON (){
-//        let params : [String : String] = ["base" : valuta]
-//        getWeatherData(url: MY_URL, parameters: params)
-//    }
+
     
     
     func getWeatherData(url: String, parameters: [String:String]){
         Alamofire.request(url, method: .get, parameters:parameters).responseJSON{
             response in
             if response.result.isSuccess{
-                //print(response.request?.description)
+                print(response.request?.description as Any)
                 print("Success! Got the weather data")
                 let currencyJSON : JSON = JSON(response.result.value!)
                 print(currencyJSON)
@@ -66,158 +61,132 @@ class CurrencyVC: UIViewController {
             }
             else{
                 print("Error \(String(describing: response.result.error))")
+                self.valutaDaConvertitreTxt.placeholder = "Connection Issue"
                 // self.locationLbl.text = "Connection Issue"
             }
         }
     }
     
     
+   
+    
     func updateCurrency(json : JSON){
-        let rates = json["rates"].stringValue
-        print("RATES",rates.count)
-        let base = json["base"].stringValue
-        currencyBaseLbl.text = "Currency base : \(base)"
-        let date = json["date"].stringValue
-        myCurrency = []
-        myCurrencyDict = [:]
+
         
-        let eur = json["rates"]["EUR"].doubleValue
-        myCurrency.append(eur)
-        myCurrencyDict["EUR"] = eur
+        myCurrencyDict = [:]
+        myCurrencyName = []
+        myCurrencyRates = []
+        
+
+        
+        
         
         let ron = json["rates"]["RON"].doubleValue
-         myCurrency.append(ron)
-        myCurrencyDict["RON"] = ron
+        
+        myCurrencyDict["RON"] = ron * importo
         
         
         let trys = json["rates"]["TRY"].doubleValue
-         myCurrency.append(trys)
-        myCurrencyDict["TRY"] = trys 
+        myCurrencyDict["TRY"] = (trys * importo).twoDecimalNumbers(place: 3)
         
         let zar = json["rates"]["ZAR"].doubleValue
-         myCurrency.append(zar)
-        myCurrencyDict["ZAR"] = zar
+        myCurrencyDict["ZAR"] = (zar * importo).twoDecimalNumbers(place: 3)
         
         let php = json["rates"]["PHP"].doubleValue
-         myCurrency.append(php)
-        myCurrencyDict["PHP"] = php
+        myCurrencyDict["PHP"] = (php * importo).twoDecimalNumbers(place: 3)
         
         let myr = json["rates"]["MYR"].doubleValue
-         myCurrency.append(myr)
-        myCurrencyDict["MYR"] = myr
+        myCurrencyDict["MYR"] = (myr * importo).twoDecimalNumbers(place: 3)
         
         let mxn = json["rates"]["MXN"].doubleValue
-         myCurrency.append(mxn)
-        myCurrencyDict["MXN"] = mxn
+        myCurrencyDict["MXN"] = (mxn * importo).twoDecimalNumbers(place: 3)
         
         let hrk = json["rates"]["HRK"].doubleValue
-         myCurrency.append(hrk)
-        myCurrencyDict["HRK"] = hrk
+        myCurrencyDict["HRK"] = (hrk * importo).twoDecimalNumbers(place: 3)
         
         let aud = json["rates"]["AUD"].doubleValue
-         myCurrency.append(aud)
-        myCurrencyDict["AUD"] = aud
+        myCurrencyDict["AUD"] = (aud * importo).twoDecimalNumbers(place: 3)
         
         let thb = json["rates"]["THB"].doubleValue
-         myCurrency.append(thb)
-        myCurrencyDict["THB"] = thb
+        myCurrencyDict["THB"] = (thb * importo).twoDecimalNumbers(place: 3)
         
         let usd = json["rates"]["USD"].doubleValue
-         myCurrency.append(usd)
-        myCurrencyDict["USD"] = usd
+        myCurrencyDict["USD"] = (usd * importo).twoDecimalNumbers(place: 3)
         
         let idr = json["rates"]["IDR"].doubleValue
-         myCurrency.append(idr)
-        myCurrencyDict["IDR"] = idr
+        myCurrencyDict["IDR"] = (idr * importo).twoDecimalNumbers(place: 3)
         
         let jpy = json["rates"]["JPY"].doubleValue
-         myCurrency.append(jpy)
-        myCurrencyDict["JPY"] = jpy
+        myCurrencyDict["JPY"] = (jpy * importo).twoDecimalNumbers(place: 3)
         
         let huf = json["rates"]["HUF"].doubleValue
-         myCurrency.append(huf)
-        myCurrencyDict["HUF"] = huf
+        myCurrencyDict["HUF"] = (huf * importo).twoDecimalNumbers(place: 3)
         
         let cny = json["rates"]["CNY"].doubleValue
-         myCurrency.append(cny)
-        myCurrencyDict["CNY"] = cny
+        myCurrencyDict["CNY"] = (cny * importo).twoDecimalNumbers(place: 3)
         
         let dkk = json["rates"]["DKK"].doubleValue
-         myCurrency.append(dkk)
-        myCurrencyDict["DKK"] = dkk
+        myCurrencyDict["DKK"] = (dkk * importo).twoDecimalNumbers(place: 3)
         
         let hkd = json["rates"]["HKD"].doubleValue
-         myCurrency.append(hkd)
-        myCurrencyDict["HKD"] = hkd
+        myCurrencyDict["HKD"] = (hkd * importo).twoDecimalNumbers(place: 3)
         
         let inr = json["rates"]["INR"].doubleValue
-         myCurrency.append(inr)
-        myCurrencyDict["INR"] = inr
+        myCurrencyDict["INR"] = (inr * importo).twoDecimalNumbers(place: 3)
         
         let rub = json["rates"]["RUB"].doubleValue
-         myCurrency.append(rub)
-        myCurrencyDict["RUB"] = rub
+        myCurrencyDict["RUB"] = (rub * importo).twoDecimalNumbers(place: 3)
         
         let bgn = json["rates"]["BGN"].doubleValue
-         myCurrency.append(bgn)
-        myCurrencyDict["BGN"] = bgn
+        myCurrencyDict["BGN"] = (bgn * importo).twoDecimalNumbers(place: 3)
         
         let gbp = json["rates"]["GBP"].doubleValue
-         myCurrency.append(gbp)
-        myCurrencyDict["GBP"] = gbp
+        myCurrencyDict["GBP"] = (gbp * importo).twoDecimalNumbers(place: 3)
         
         let pln = json["rates"]["PLN"].doubleValue
-         myCurrency.append(pln)
-        myCurrencyDict["PLN"] = pln
+        myCurrencyDict["PLN"] = (pln * importo).twoDecimalNumbers(place: 3)
         
         let chf = json["rates"]["CHF"].doubleValue
-         myCurrency.append(chf)
-        myCurrencyDict["CHF"] = chf
+        myCurrencyDict["CHF"] = (chf * importo).twoDecimalNumbers(place: 3)
         
         let nok = json["rates"]["NOK"].doubleValue
-         myCurrency.append(nok)
-        myCurrencyDict["NOK"] = nok
+        myCurrencyDict["NOK"] = (nok * importo).twoDecimalNumbers(place: 3)
         
         let brl = json["rates"]["BRL"].doubleValue
-         myCurrency.append(brl)
-        myCurrencyDict["BRL"] = brl
+        myCurrencyDict["BRL"] = (brl * importo).twoDecimalNumbers(place: 3)
         
         let ils = json["rates"]["ILS"].doubleValue
-         myCurrency.append(ils)
-        myCurrencyDict["ILS"] = ils
+        myCurrencyDict["ILS"] = (ils * importo).twoDecimalNumbers(place: 3)
         
         let cad = json["rates"]["CAD"].doubleValue
-         myCurrency.append(cad)
-        myCurrencyDict["CAD"] = cad
+        myCurrencyDict["CAD"] = (cad * importo).twoDecimalNumbers(place: 2)
         
         let sgd = json["rates"]["SGD"].doubleValue
-         myCurrency.append(sgd)
-        myCurrencyDict["SGD"] = sgd
+        myCurrencyDict["SGD"] = (sgd * importo).twoDecimalNumbers(place: 3)
         
         let czk = json["rates"]["CZK"].doubleValue
-         myCurrency.append(czk)
-        myCurrencyDict["CZK"] = czk
+        myCurrencyDict["CZK"] = (czk * importo).twoDecimalNumbers(place: 3)
         
         let isk = json["rates"]["ISK"].doubleValue
-         myCurrency.append(isk)
-        myCurrencyDict["ISK"] = isk
+        myCurrencyDict["ISK"] = (isk * importo).twoDecimalNumbers(place: 3)
         
         let nzd = json["rates"]["NZD"].doubleValue
-         myCurrency.append(nzd)
-        myCurrencyDict["NZD"] = nzd
+        myCurrencyDict["NZD"] = (nzd * importo).twoDecimalNumbers(place: 3)
         
         let krw = json["rates"]["KRW"].doubleValue
-         myCurrency.append(krw)
-        myCurrencyDict["KRW"] = krw
+        myCurrencyDict["KRW"] = (krw * importo).twoDecimalNumbers(place: 3)
         
         let sek = json["rates"]["SEK"].doubleValue
-         myCurrency.append(sek)
-        myCurrencyDict["SEK"] = sek
+        myCurrencyDict["SEK"] = (sek * importo).twoDecimalNumbers(place: 3)
         
-        print("cazzooo", myCurrency)
-        print(base)
-        print(date)
-        print(eur)
+
+        for i in myCurrencyDict{
+
+            myCurrencyName.append(i.key)
+            myCurrencyRates.append(i.value)
+        }
+        print("LA MIA LISTA NAME",myCurrencyName)
+        print("LA MIA LISTA RATES", myCurrencyRates)
         currencyTableView.reloadData()
 
     }
@@ -228,76 +197,75 @@ class CurrencyVC: UIViewController {
     func tapGestureRecognize(){
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rimuoviTastiera))
         view.addGestureRecognizer(tap)
+        currencyTableView.reloadData()
     }
     
     @objc func rimuoviTastiera(){
         self.view.endEditing(true)
+        currencyTableView.reloadData()
     }
     
-}
-
-
-
-extension CurrencyVC : UIPickerViewDelegate,UIPickerViewDataSource{
     
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-    {
-        return pickerData[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
-        //valuta = pickerData[row]
-        tapGestureRecognize()
-        self.view.endEditing(true)
-        valuta = currencyFinder(currency: pickerData[row])
-        print("VALUTA", valuta)
-        if valuta != "Unknow" || valuta != ""{
-        let params : [String : String] = ["base" : valuta]
+    @IBAction func convertBtnWasPressed(_ sender: Any) {
+        if valutaDaConvertitreTxt.text! == ""{
+            //importo = 1
+            alert()
+            return
+        } else {
+            importo = Double(valutaDaConvertitreTxt.text!) as! Double
+        }
+        print("IMPORTO", importo)
+        let params : [String : String] = ["base" : "EUR"]
         getWeatherData(url: MY_URL, parameters: params)
-        currencyTableView.reloadData()
-            print("VEDIAMO", myCurrencyDict)
-        }
+        self.view.endEditing(true)
         currencyTableView.reloadData()
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Avenir", size: 30)
-            pickerLabel?.textAlignment = .center
-        }
-        pickerLabel?.text = pickerData[row]
-        pickerLabel?.textColor = UIColor.black
+    func alert (){
+        let alert = UIAlertController(title: "ATTENTION !!!", message: "Please enter the amount to convert", preferredStyle: .alert)
         
-        return pickerLabel!
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (UIAlertAction) in
+            print("User click Approve button")
+        }))
+        
+        self.present(alert,animated: true, completion: {
+            print("completion block")
+        })
     }
+    
+    
+    
+    
+    
+
     
     
 }
+
+
+
 
 
 extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myCurrency.count
+        return myCurrencyName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as? currencyCell
-        let indexCurrency = Array(myCurrencyDict.keys.sorted())[indexPath.row]
-        let indexRates = trovaString(currency: indexCurrency)
-       // let indexRates = Array(myCurrencyDict.values)[indexPath.row]
+        //let indexCurrency = Array(myCurrencyDict.keys.sorted())[indexPath.row]
+        let indexCurrency = myCurrencyName[indexPath.row]
+        print("MY INDEX", indexCurrency)
+        //let indexRates = trovaString(currency: indexCurrency)
+        let indexRates = myCurrencyRates[indexPath.row]
+        //let cello = raggruppamento(nome: myCurrencyName, rates: myCurrencyRates, flag: valuta, indexPath: indexPath.row)
         cell?.setCurrncy(currency: indexCurrency, rates: indexRates, flag: indexCurrency)
+        return cell!
+    }
+    
+    func raggruppamento(nome : [String], rates : [Double], flag : String, indexPath : Int) -> UITableViewCell{
+        let cell = UITableViewCell() as? currencyCell
+        cell?.setCurrncy(currency: nome[indexPath], rates: rates[indexPath], flag: nome[indexPath])
         return cell!
     }
     
@@ -307,8 +275,15 @@ extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
         for i in myCurrencyDict{
             if i.key == currency {
                 a = i.value
-            }
+        }
         }
         return a
+    }
+}
+
+extension Double {
+    func twoDecimalNumbers(place: Int) -> Double{
+        let divisor = pow(10.0, Double(place))
+        return (self * divisor).rounded() / divisor
     }
 }
