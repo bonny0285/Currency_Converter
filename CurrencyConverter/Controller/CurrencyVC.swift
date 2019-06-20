@@ -26,6 +26,8 @@ class CurrencyVC: UIViewController {
     @IBOutlet weak var currencyBaseLbl: UILabel!
     @IBOutlet weak var currencyTableView: UITableView!
     
+    @IBOutlet weak var dateAndTimeLbl: UILabel!
+    @IBOutlet weak var convertiBtn: UIButton!
     
     
     
@@ -36,6 +38,7 @@ class CurrencyVC: UIViewController {
         currencyTableView.dataSource = self
         currencyTableView.delegate = self
         currencyTableView.reloadData()
+        //dateAndTimeLbl.text = "Currency Time: \(getDateAndTime())"
 
     }
 
@@ -83,7 +86,7 @@ class CurrencyVC: UIViewController {
         
         let ron = json["rates"]["RON"].doubleValue
         
-        myCurrencyDict["RON"] = ron * importo
+        myCurrencyDict["RON"] = (ron * importo).twoDecimalNumbers(place: 3)
         
         
         let trys = json["rates"]["TRY"].doubleValue
@@ -213,13 +216,32 @@ class CurrencyVC: UIViewController {
             return
         } else {
             importo = Double(valutaDaConvertitreTxt.text!) as! Double
+           // let amount: Double = 123.45
+            
+            let amountString = String(format: "%.02f €", importo)
+            valutaDaConvertitreTxt.text = amountString
         }
         print("IMPORTO", importo)
         let params : [String : String] = ["base" : "EUR"]
         getWeatherData(url: MY_URL, parameters: params)
         self.view.endEditing(true)
+        dateAndTimeLbl.text = "Currency Time: \(getDateAndTime())"
+        convertiBtn.isHidden = true
         currencyTableView.reloadData()
     }
+    
+    
+    @IBAction func touchUPInside(_ sender: Any) {
+        
+    }
+    @IBAction func textChanged(_ sender: Any) {
+        convertiBtn.isHidden = false
+    }
+    
+    @IBAction func cancelText(_ sender: Any) {
+        valutaDaConvertitreTxt.text = ""
+    }
+    
     
     func alert (){
         let alert = UIAlertController(title: "ATTENTION !!!", message: "Please enter the amount to convert", preferredStyle: .alert)
@@ -235,7 +257,21 @@ class CurrencyVC: UIViewController {
     
     
     
-    
+    func getDateAndTime () -> String{
+        
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: Date()) // string purpose I add here
+        // convert your string to date
+        let yourDate = formatter.date(from: myString)
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "dd-MMM-yyyy HH:mm:ss"
+        // again convert your date to string
+        let myStringafd = formatter.string(from: yourDate!)
+        return myStringafd
+    }
     
 
     
@@ -258,17 +294,13 @@ extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
         print("MY INDEX", indexCurrency)
         //let indexRates = trovaString(currency: indexCurrency)
         let indexRates = myCurrencyRates[indexPath.row]
+        let indexName = currencyName(currency: indexCurrency)
         //let cello = raggruppamento(nome: myCurrencyName, rates: myCurrencyRates, flag: valuta, indexPath: indexPath.row)
-        cell?.setCurrncy(currency: indexCurrency, rates: indexRates, flag: indexCurrency)
+        cell?.setCurrncy(currency: indexCurrency, rates: indexRates, flag:indexCurrency, name: indexName)
         return cell!
     }
     
-    func raggruppamento(nome : [String], rates : [Double], flag : String, indexPath : Int) -> UITableViewCell{
-        let cell = UITableViewCell() as? currencyCell
-        cell?.setCurrncy(currency: nome[indexPath], rates: rates[indexPath], flag: nome[indexPath])
-        return cell!
-    }
-    
+
     func trovaString (currency : String) -> Double{
         var a : Double = 0.0
         

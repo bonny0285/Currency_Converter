@@ -12,6 +12,7 @@ class currencyCell: UITableViewCell {
 
     @IBOutlet weak var currencyLbl: UILabel!
     @IBOutlet weak var currencyImage: UIImageView!
+    @IBOutlet weak var currencyNameLbl: UILabel!
     
     
     override func awakeFromNib() {
@@ -19,10 +20,11 @@ class currencyCell: UITableViewCell {
         // Initialization code
     }
 
-    func setCurrncy(currency : String , rates : Double, flag : String){
+    func setCurrncy(currency : String , rates : Double, flag : String, name : String){
         
         currencyLbl.text = "\(currency) - \(rates)"
         currencyImage.image = UIImage(named: flag)
+        currencyNameLbl.text = name
     }
 
 }

@@ -53,74 +53,74 @@ class Currency : NSObject {
 }
     
     
-    func currencyFinder (currency : String) -> String{
+    func currencyName (currency : String) -> String{
         switch currency {
         case "---":
             return "UNKNOW"
         case "AUD":
-            return "AUD"
+            return "Australia Dollar"
         case "BGN":
-            return "BGN"
+            return "Bulgaria Lev"
         case "BRL":
-            return "BRL"
-        case "CAO":
-            return "CAO"
+            return "Brazilian Rreal"
+        case "CAD":
+            return "Canada Dollar"
         case "CHF":
-            return "CHF"
+            return "Switzerland Franc"
         case "CNY":
-            return "CNY"
+            return "Chinese Yuan Renminbi"
         case "CZK":
-            return "CZK"
+            return "Czech Koruna"
         case "DKK":
-            return "DKK"
+            return "Denmark Krone"
         case "EUR":
             return "EUR"
         case "GBP":
-            return "GBP"
+            return "British Pound"
         case "HKD":
-            return "HKD"
+            return "Hong Kong Dollar"
         case "HRK":
-            return "HRK"
+            return "Croatia Kuna"
         case "HUF":
-            return "HUF"
+            return "Hungarian Forint"
         case "IDR":
-            return "IDR"
+            return "Indonesia Rupiah"
         case "ILS":
-            return "ILS"
+            return "Israeli Shekel"
         case "INR":
-            return "INR"
+            return "India Rupee"
         case "ISK":
-            return "ISK"
+            return "Icelandi Krona"
         case "JPY":
-            return "JPY"
+            return "Japan Yen"
         case "KRW":
-            return "KRW"
+            return "South Corea Won"
         case "MXN":
-            return "MXN"
+            return "Mexico Peso"
         case "MYR":
-            return "MYR"
+            return "Malaysian Ringgit"
         case "NOK":
-            return "NOK"
+            return "Norway Krone"
         case "NZD":
-            return "NZD"
+            return "New Zealand Dollar"
         case "PHP":
-            return "PHP"
+            return "Philippines Peso"
         case "PLN":
-            return "PLN"
+            return "Poland Zloty"
         case "RON":
-            return "RON"
+            return "Romanian Leu"
         case "RUB":
-            return "RUB"
+            return "Russia Ruble"
         case "SEK":
-            return "SEK"
+            return "Sweden Krona"
         case "SGD":
-            return "SGD"
+            return "Singapore Dollar"
         case "TRY":
-            return "TRY"
+            return "Turkish Lira"
         case "USD":
-            return "USD"
+            return "United States Dollar"
         case "ZAR":
-            return "ZAR"
+            return "South Africa Rand"
         default:
             return "unknow"
         }
