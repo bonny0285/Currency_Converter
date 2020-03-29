@@ -12,6 +12,7 @@ import Alamofire
 
 class CurrencyVC: UIViewController {
 
+    
     var pickerData : [String] = ["---","BGN","NZD","ILS","RUB","CAD","USD","PHP","CHF","AUD","JPY","TRY","HKD","MYR","HRK","CZK","IDR","DKK","NOK","HUF","GBP","MXN","THB","ISK","ZAR","BRL","SGD","PLN","INR","KRW","RON","CNY","SEK","EUR"].sorted()
     let currency = Currency()
     let MY_URL = "https://api.exchangeratesapi.io/latest?"
@@ -53,19 +54,19 @@ class CurrencyVC: UIViewController {
     
     
     func getWeatherData(url: String, parameters: [String:String]){
-        Alamofire.request(url, method: .get, parameters:parameters).responseJSON{
+        
+        AF.request(url, method: .get, parameters:parameters).responseJSON{
             response in
-            if response.result.isSuccess{
-                print(response.request?.description as Any)
-                print("Success! Got the weather data")
-                let currencyJSON : JSON = JSON(response.result.value!)
+            
+            switch response.result{
+            case .success(let value):
+                print("Success! Got the weather data",value)
+                let currencyJSON : JSON = JSON(arrayLiteral: value)
                 print(currencyJSON)
                 self.updateCurrency(json: currencyJSON)
-            }
-            else{
-                print("Error \(String(describing: response.result.error))")
+            case .failure(let error):
                 self.valutaDaConvertitreTxt.placeholder = "Connection Issue"
-                // self.locationLbl.text = "Connection Issue"
+                print(error.localizedDescription)
             }
         }
     }
@@ -281,7 +282,7 @@ class CurrencyVC: UIViewController {
 
 
 
-
+//MARK: - Extension UITableViewDelegte UITableViewDataSource
 extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myCurrencyName.count
@@ -294,9 +295,9 @@ extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
         print("MY INDEX", indexCurrency)
         //let indexRates = trovaString(currency: indexCurrency)
         let indexRates = myCurrencyRates[indexPath.row]
-        let indexName = currencyName(currency: indexCurrency)
+        //let indexName = currencyName(currency: indexCurrency)
         //let cello = raggruppamento(nome: myCurrencyName, rates: myCurrencyRates, flag: valuta, indexPath: indexPath.row)
-        cell?.setCurrncy(currency: indexCurrency, rates: indexRates, flag:indexCurrency, name: indexName)
+            // cell?.setCurrncy(currency: indexCurrency, rates: indexRates, flag:indexCurrency, name: indexName)
         return cell!
     }
     
@@ -313,9 +314,9 @@ extension CurrencyVC : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension Double {
-    func twoDecimalNumbers(place: Int) -> Double{
-        let divisor = pow(10.0, Double(place))
-        return (self * divisor).rounded() / divisor
-    }
-}
+//extension Double {
+//    func twoDecimalNumbers(place: Int) -> Double{
+//        let divisor = pow(10.0, Double(place))
+//        return (self * divisor).rounded() / divisor
+//    }
+//}

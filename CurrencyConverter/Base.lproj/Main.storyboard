@@ -1,15 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lEY-5T-bj0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Rate View Controller-->
+        <scene sceneID="yha-4i-YHt">
+            <objects>
+                <viewController id="lEY-5T-bj0" customClass="RateViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="veo-6Z-79r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandiera-unione-europea-orig" translatesAutoresizingMaskIntoConstraints="NO" id="HkH-N7-Dtv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your currency" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lUS-nM-Ys5">
+                                <rect key="frame" x="85" y="194" width="244" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="Qtg-63-rRv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJU-5f-f1Z">
+                                <rect key="frame" x="0.0" y="359" width="414" height="216"/>
+                            </pickerView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXE-1W-mDc">
+                                <rect key="frame" x="0.0" y="595" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xGV-K4-rLg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Press to Convert">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="convertBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DjI-fD-7Nj"/>
+                                    <action selector="convertButtonWasPressed:" destination="lEY-5T-bj0" eventType="touchUpInside" id="wcT-qf-sor"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount to convert" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRS-2s-Xgf">
+                                <rect key="frame" x="50" y="265" width="314" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="amountTextEditingChanged:" destination="lEY-5T-bj0" eventType="editingChanged" id="ejp-2W-V2J"/>
+                                    <action selector="amountTextValueChanged:" destination="lEY-5T-bj0" eventType="valueChanged" id="wOY-GX-n6X"/>
+                                    <action selector="textFieldTocuhDown:" destination="lEY-5T-bj0" eventType="touchDown" id="7fh-nX-TPJ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOX-8Y-8zK">
+                                <rect key="frame" x="328" y="270.5" width="28" height="23"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="keyboard.chevron.compact.down" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissKeyboardButton:" destination="lEY-5T-bj0" eventType="touchUpInside" id="0Do-nR-gem"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WJU-5f-f1Z" firstAttribute="trailing" secondItem="ICt-Ke-94R" secondAttribute="trailing" id="0wZ-SQ-tBP"/>
+                            <constraint firstItem="IOX-8Y-8zK" firstAttribute="trailing" secondItem="TRS-2s-Xgf" secondAttribute="trailingMargin" id="88J-UR-EUv"/>
+                            <constraint firstAttribute="bottom" secondItem="HkH-N7-Dtv" secondAttribute="bottom" id="9AN-Xu-NwE"/>
+                            <constraint firstItem="TRS-2s-Xgf" firstAttribute="top" secondItem="lUS-nM-Ys5" secondAttribute="bottom" constant="30" id="PZ6-ao-e1t"/>
+                            <constraint firstItem="WJU-5f-f1Z" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" id="Qap-qr-d8p"/>
+                            <constraint firstItem="HkH-N7-Dtv" firstAttribute="trailing" secondItem="ICt-Ke-94R" secondAttribute="trailing" id="Y7v-5f-9fR"/>
+                            <constraint firstItem="OXE-1W-mDc" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" id="aRy-py-kg5"/>
+                            <constraint firstItem="HkH-N7-Dtv" firstAttribute="top" secondItem="veo-6Z-79r" secondAttribute="top" id="aeQ-Al-D25"/>
+                            <constraint firstItem="ICt-Ke-94R" firstAttribute="trailing" secondItem="TRS-2s-Xgf" secondAttribute="trailing" constant="50" id="cTK-ng-xUo"/>
+                            <constraint firstItem="TRS-2s-Xgf" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" constant="50" id="dX1-MD-kkv"/>
+                            <constraint firstItem="IOX-8Y-8zK" firstAttribute="centerY" secondItem="TRS-2s-Xgf" secondAttribute="centerY" id="j2B-Ff-1CY"/>
+                            <constraint firstItem="OXE-1W-mDc" firstAttribute="trailing" secondItem="ICt-Ke-94R" secondAttribute="trailing" id="jTf-Lx-Yhy"/>
+                            <constraint firstItem="HkH-N7-Dtv" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" id="klA-y4-fkA"/>
+                            <constraint firstItem="OXE-1W-mDc" firstAttribute="top" secondItem="WJU-5f-f1Z" secondAttribute="bottom" constant="20" id="oV0-tm-4jd"/>
+                            <constraint firstItem="WJU-5f-f1Z" firstAttribute="top" secondItem="TRS-2s-Xgf" secondAttribute="bottom" constant="60" id="rbX-LS-JpN"/>
+                            <constraint firstItem="lUS-nM-Ys5" firstAttribute="centerX" secondItem="veo-6Z-79r" secondAttribute="centerX" id="sSn-BW-0K6"/>
+                            <constraint firstItem="lUS-nM-Ys5" firstAttribute="top" secondItem="ICt-Ke-94R" secondAttribute="top" constant="150" id="tFr-MC-R2B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ICt-Ke-94R"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountToConvertText" destination="TRS-2s-Xgf" id="JbL-U4-Ljz"/>
+                        <outlet property="convertButton" destination="OXE-1W-mDc" id="yw9-E7-u6A"/>
+                        <outlet property="currencyPickerView" destination="WJU-5f-f1Z" id="5mh-YO-f2k"/>
+                        <outlet property="dismissKeyboardBtn" destination="IOX-8Y-8zK" id="Nvt-wF-IgT"/>
+                        <segue destination="SaU-3Z-pKP" kind="show" identifier="segueToMain" id="bd2-So-5Ui"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9P-Py-a04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1149" y="-1"/>
+        </scene>
+        <!--Currency View Controller-->
+        <scene sceneID="thq-yB-h7M">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="SaU-3Z-pKP" customClass="CurrencyViewController" customModule="CurrencyConverter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LXa-km-5U1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandiera-unione-europea-orig" translatesAutoresizingMaskIntoConstraints="NO" id="bVj-S0-rkq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="325" id="Brv-fQ-Epo"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Convert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTk-KJ-lP8">
+                                <rect key="frame" x="83.5" y="104" width="247" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="BBQ-P6-ter"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kp-CH-vhc">
+                                <rect key="frame" x="182.5" y="196" width="49" height="43"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.94901960780000005" green="0.95294117649999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonWasPressed:" destination="SaU-3Z-pKP" eventType="touchUpInside" id="7v5-tr-8iD"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cdS-Vp-Jfx">
+                                <rect key="frame" x="0.0" y="325" width="414" height="571"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="currencyCell" rowHeight="100" id="CrW-5q-dIl" customClass="NewCurrencyTableViewCell" customModule="CurrencyConverter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CrW-5q-dIl" id="8pA-2b-0EQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="68E-JD-uUt">
+                                                    <rect key="frame" x="20" y="11" width="115" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="115" id="LEo-LP-pjt"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency base:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5bj-wu-ZT8">
+                                                    <rect key="frame" x="205" y="21" width="119" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="gYk-NB-bdJ">
+                                                    <rect key="frame" x="219.5" y="53" width="90" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="5bj-wu-ZT8" firstAttribute="top" secondItem="8pA-2b-0EQ" secondAttribute="topMargin" constant="10" id="04M-fp-QrC"/>
+                                                <constraint firstItem="5bj-wu-ZT8" firstAttribute="leading" secondItem="68E-JD-uUt" secondAttribute="trailing" constant="70" id="Rvv-Ei-1Ab"/>
+                                                <constraint firstItem="gYk-NB-bdJ" firstAttribute="centerX" secondItem="5bj-wu-ZT8" secondAttribute="centerX" id="YFJ-mC-6ze"/>
+                                                <constraint firstItem="68E-JD-uUt" firstAttribute="top" secondItem="8pA-2b-0EQ" secondAttribute="topMargin" id="a3L-uH-H79"/>
+                                                <constraint firstItem="68E-JD-uUt" firstAttribute="bottom" secondItem="8pA-2b-0EQ" secondAttribute="bottomMargin" id="hHk-aV-is9"/>
+                                                <constraint firstItem="68E-JD-uUt" firstAttribute="leading" secondItem="8pA-2b-0EQ" secondAttribute="leadingMargin" id="i5I-qM-0nR"/>
+                                                <constraint firstItem="gYk-NB-bdJ" firstAttribute="top" secondItem="5bj-wu-ZT8" secondAttribute="bottom" constant="8" id="u7g-1H-Tep"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="currencyLabel" destination="5bj-wu-ZT8" id="6hN-tc-Jpx"/>
+                                            <outlet property="currencyNameLabel" destination="gYk-NB-bdJ" id="mwB-BX-LFy"/>
+                                            <outlet property="imageCurrencyFlag" destination="68E-JD-uUt" id="eng-OK-bc1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Se6-g2-fdY">
+                                <rect key="frame" x="10" y="293" width="394" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From : EUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hs-gh-tOW">
+                                <rect key="frame" x="148.5" y="155" width="117" height="31"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wTk-KJ-lP8" firstAttribute="centerX" secondItem="LXa-km-5U1" secondAttribute="centerX" id="7nd-4W-pO6"/>
+                            <constraint firstItem="cdS-Vp-Jfx" firstAttribute="leading" secondItem="LYs-lK-IUD" secondAttribute="leading" id="8aR-Vd-pF1"/>
+                            <constraint firstItem="wTk-KJ-lP8" firstAttribute="top" secondItem="LYs-lK-IUD" secondAttribute="top" constant="60" id="FGY-hR-fVd"/>
+                            <constraint firstItem="Se6-g2-fdY" firstAttribute="leading" secondItem="LYs-lK-IUD" secondAttribute="leading" constant="10" id="KFt-xh-aWd"/>
+                            <constraint firstItem="gYk-NB-bdJ" firstAttribute="top" secondItem="5bj-wu-ZT8" secondAttribute="bottom" constant="8" id="Kji-Je-fS4"/>
+                            <constraint firstItem="1hs-gh-tOW" firstAttribute="centerX" secondItem="wTk-KJ-lP8" secondAttribute="centerX" id="Ut7-aQ-4AT"/>
+                            <constraint firstItem="cdS-Vp-Jfx" firstAttribute="trailing" secondItem="LYs-lK-IUD" secondAttribute="trailing" id="V5G-jP-E8V"/>
+                            <constraint firstItem="bVj-S0-rkq" firstAttribute="leading" secondItem="LYs-lK-IUD" secondAttribute="leading" id="YWi-Hh-DSe"/>
+                            <constraint firstItem="bVj-S0-rkq" firstAttribute="trailing" secondItem="LYs-lK-IUD" secondAttribute="trailing" id="Zk4-nI-sX8"/>
+                            <constraint firstItem="LYs-lK-IUD" firstAttribute="trailing" secondItem="Se6-g2-fdY" secondAttribute="trailing" constant="10" id="bqx-Kq-L0l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5bj-wu-ZT8" secondAttribute="trailing" constant="70" id="dI6-i3-hIl"/>
+                            <constraint firstItem="1hs-gh-tOW" firstAttribute="top" secondItem="wTk-KJ-lP8" secondAttribute="bottom" constant="10" id="evz-Zk-7q8"/>
+                            <constraint firstItem="8Kp-CH-vhc" firstAttribute="centerX" secondItem="wTk-KJ-lP8" secondAttribute="centerX" id="g11-3f-dqx"/>
+                            <constraint firstItem="cdS-Vp-Jfx" firstAttribute="top" secondItem="bVj-S0-rkq" secondAttribute="bottom" id="j08-pv-4sm"/>
+                            <constraint firstItem="5bj-wu-ZT8" firstAttribute="top" secondItem="LXa-km-5U1" secondAttribute="topMargin" constant="330" id="kb7-Nv-PXU"/>
+                            <constraint firstAttribute="bottom" secondItem="cdS-Vp-Jfx" secondAttribute="bottom" id="l4F-YN-RAD"/>
+                            <constraint firstItem="cdS-Vp-Jfx" firstAttribute="top" secondItem="Se6-g2-fdY" secondAttribute="bottom" constant="8" id="lJA-gQ-J1g"/>
+                            <constraint firstItem="bVj-S0-rkq" firstAttribute="top" secondItem="LXa-km-5U1" secondAttribute="top" id="lfZ-Js-aYx"/>
+                            <constraint firstItem="gYk-NB-bdJ" firstAttribute="centerX" secondItem="5bj-wu-ZT8" secondAttribute="centerX" id="nj7-B3-bUq"/>
+                            <constraint firstItem="8Kp-CH-vhc" firstAttribute="top" secondItem="1hs-gh-tOW" secondAttribute="bottom" constant="10" id="xBT-ZL-QB6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LYs-lK-IUD"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VmM-Cj-UUp"/>
+                    <connections>
+                        <outlet property="currencyName" destination="1hs-gh-tOW" id="6pD-RT-LvZ"/>
+                        <outlet property="currencyTimeLabel" destination="Se6-g2-fdY" id="l7O-m4-8u4"/>
+                        <outlet property="tableView" destination="cdS-Vp-Jfx" id="xc8-Bk-q3t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18u-lI-2FU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-281.15942028985512" y="-2.0089285714285712"/>
+        </scene>
         <!--CurrencyVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -38,7 +257,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gmT-aC-cde" id="AbZ-DC-2jH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chinese Yuan Renminbi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOr-CO-WjT">
@@ -87,7 +306,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9Ch-Qf-eKT"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
@@ -154,10 +372,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57.971014492753625" y="32.8125"/>
+            <point key="canvasLocation" x="913" y="11"/>
         </scene>
     </scenes>
     <resources>
         <image name="bandiera-unione-europea-orig" width="1697" height="1131"/>
+        <image name="keyboard.chevron.compact.down" catalog="system" width="128" height="91"/>
     </resources>
 </document>
