@@ -56,9 +56,13 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOX-8Y-8zK">
-                                <rect key="frame" x="328" y="270.5" width="28" height="23"/>
+                                <rect key="frame" x="329" y="267" width="25" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="H7n-We-TBE"/>
+                                    <constraint firstAttribute="height" constant="30" id="TXZ-KW-CXk"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="keyboard.chevron.compact.down" catalog="system"/>
+                                <state key="normal" image="keyboard"/>
                                 <connections>
                                     <action selector="dismissKeyboardButton:" destination="lEY-5T-bj0" eventType="touchUpInside" id="0Do-nR-gem"/>
                                 </connections>
@@ -67,7 +71,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WJU-5f-f1Z" firstAttribute="trailing" secondItem="ICt-Ke-94R" secondAttribute="trailing" id="0wZ-SQ-tBP"/>
-                            <constraint firstItem="IOX-8Y-8zK" firstAttribute="trailing" secondItem="TRS-2s-Xgf" secondAttribute="trailingMargin" id="88J-UR-EUv"/>
+                            <constraint firstItem="ICt-Ke-94R" firstAttribute="trailing" secondItem="IOX-8Y-8zK" secondAttribute="trailing" constant="60" id="4iX-2d-KJ9"/>
+                            <constraint firstItem="IOX-8Y-8zK" firstAttribute="centerY" secondItem="TRS-2s-Xgf" secondAttribute="centerY" id="6JH-am-8yJ"/>
                             <constraint firstAttribute="bottom" secondItem="HkH-N7-Dtv" secondAttribute="bottom" id="9AN-Xu-NwE"/>
                             <constraint firstItem="TRS-2s-Xgf" firstAttribute="top" secondItem="lUS-nM-Ys5" secondAttribute="bottom" constant="30" id="PZ6-ao-e1t"/>
                             <constraint firstItem="WJU-5f-f1Z" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" id="Qap-qr-d8p"/>
@@ -76,7 +81,6 @@
                             <constraint firstItem="HkH-N7-Dtv" firstAttribute="top" secondItem="veo-6Z-79r" secondAttribute="top" id="aeQ-Al-D25"/>
                             <constraint firstItem="ICt-Ke-94R" firstAttribute="trailing" secondItem="TRS-2s-Xgf" secondAttribute="trailing" constant="50" id="cTK-ng-xUo"/>
                             <constraint firstItem="TRS-2s-Xgf" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" constant="50" id="dX1-MD-kkv"/>
-                            <constraint firstItem="IOX-8Y-8zK" firstAttribute="centerY" secondItem="TRS-2s-Xgf" secondAttribute="centerY" id="j2B-Ff-1CY"/>
                             <constraint firstItem="OXE-1W-mDc" firstAttribute="trailing" secondItem="ICt-Ke-94R" secondAttribute="trailing" id="jTf-Lx-Yhy"/>
                             <constraint firstItem="HkH-N7-Dtv" firstAttribute="leading" secondItem="ICt-Ke-94R" secondAttribute="leading" id="klA-y4-fkA"/>
                             <constraint firstItem="OXE-1W-mDc" firstAttribute="top" secondItem="WJU-5f-f1Z" secondAttribute="bottom" constant="20" id="oV0-tm-4jd"/>
@@ -96,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9P-Py-a04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1149" y="-1"/>
+            <point key="canvasLocation" x="-1149.2753623188407" y="-1.3392857142857142"/>
         </scene>
         <!--Currency View Controller-->
         <scene sceneID="thq-yB-h7M">
@@ -205,11 +209,9 @@
                             <constraint firstItem="bVj-S0-rkq" firstAttribute="leading" secondItem="LYs-lK-IUD" secondAttribute="leading" id="YWi-Hh-DSe"/>
                             <constraint firstItem="bVj-S0-rkq" firstAttribute="trailing" secondItem="LYs-lK-IUD" secondAttribute="trailing" id="Zk4-nI-sX8"/>
                             <constraint firstItem="LYs-lK-IUD" firstAttribute="trailing" secondItem="Se6-g2-fdY" secondAttribute="trailing" constant="10" id="bqx-Kq-L0l"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5bj-wu-ZT8" secondAttribute="trailing" constant="70" id="dI6-i3-hIl"/>
                             <constraint firstItem="1hs-gh-tOW" firstAttribute="top" secondItem="wTk-KJ-lP8" secondAttribute="bottom" constant="10" id="evz-Zk-7q8"/>
                             <constraint firstItem="8Kp-CH-vhc" firstAttribute="centerX" secondItem="wTk-KJ-lP8" secondAttribute="centerX" id="g11-3f-dqx"/>
                             <constraint firstItem="cdS-Vp-Jfx" firstAttribute="top" secondItem="bVj-S0-rkq" secondAttribute="bottom" id="j08-pv-4sm"/>
-                            <constraint firstItem="5bj-wu-ZT8" firstAttribute="top" secondItem="LXa-km-5U1" secondAttribute="topMargin" constant="330" id="kb7-Nv-PXU"/>
                             <constraint firstAttribute="bottom" secondItem="cdS-Vp-Jfx" secondAttribute="bottom" id="l4F-YN-RAD"/>
                             <constraint firstItem="cdS-Vp-Jfx" firstAttribute="top" secondItem="Se6-g2-fdY" secondAttribute="bottom" constant="8" id="lJA-gQ-J1g"/>
                             <constraint firstItem="bVj-S0-rkq" firstAttribute="top" secondItem="LXa-km-5U1" secondAttribute="top" id="lfZ-Js-aYx"/>
@@ -377,6 +379,6 @@
     </scenes>
     <resources>
         <image name="bandiera-unione-europea-orig" width="1697" height="1131"/>
-        <image name="keyboard.chevron.compact.down" catalog="system" width="128" height="91"/>
+        <image name="keyboard" width="512" height="512"/>
     </resources>
 </document>
