@@ -14,7 +14,11 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+<<<<<<< HEAD
                BlueprintIdentifier = "E8B9FB473A756D0F293FD376C345FB87"
+=======
+               BlueprintIdentifier = "95A2C909C2B0367819DF8DDCC3AC525A"
+>>>>>>> master
                BuildableName = "Pods_CurrencyConverter.framework"
                BlueprintName = "Pods-CurrencyConverter"
                ReferencedContainer = "container:Pods.xcodeproj">
