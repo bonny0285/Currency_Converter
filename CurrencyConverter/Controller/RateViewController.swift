@@ -36,6 +36,7 @@ class RateViewController: UIViewController {
         
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
+        currencyPickerView.isHidden = true
         dismissKeyboardBtn.isHidden = true
     }
     
@@ -52,6 +53,8 @@ class RateViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         convertButton.isHidden = true
+        currencyPickerView.isHidden = true
+        dismissKeyboardBtn.isHidden = true
         amountToConvertText.text = ""
         currencyPickerView.selectRow(0, inComponent: 0, animated: true)
     }
@@ -89,9 +92,11 @@ class RateViewController: UIViewController {
     @IBAction func amountTextEditingChanged(_ sender: UITextField) {
         if amountToConvertText.text == ""{
             convertButton.isHidden = true
+            currencyPickerView.isHidden = true
             dismissKeyboardBtn.isHidden = true
         } else if amountToConvertText.text != "" {
             convertButton.isHidden = true
+            currencyPickerView.isHidden = false
             dismissKeyboardBtn.isHidden = false
         }
     }
@@ -112,6 +117,7 @@ class RateViewController: UIViewController {
     //MARK: - TextFieldTouchDown
     @IBAction func textFieldTouchDown(_ sender: UITextField) {
         dismissKeyboardBtn.isHidden = false
+        currencyPickerView.isHidden = true
     }
     
     

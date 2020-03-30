@@ -34,6 +34,10 @@ class InfoViewController: UIViewController {
         infoVersionAppLabel.text = "App Version: \(appVersion)"
         tabelView.delegate = self
         tabelView.dataSource = self
+        
+        let cell = tabelView.dequeueReusableCell(withIdentifier: "infoCell") as! InfoTableViewCell
+        roundImage(forImage: cell.imageApp)
+        
     }
     
 
@@ -64,9 +68,10 @@ class InfoViewController: UIViewController {
     
     
     func roundImage(forImage image: UIImageView){
-        image.layoutIfNeeded()
+        print(#function)
+       // image.layoutIfNeeded()
         image.layer.cornerRadius = image.frame.height / 2
-        image.layer.masksToBounds = true
+       // image.layer.masksToBounds = true
         image.clipsToBounds = true
     }
     

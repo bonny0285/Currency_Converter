@@ -63,8 +63,8 @@
                                                         <constraint firstAttribute="height" constant="78" id="nV4-jM-IXy"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKT-xP-JoF">
-                                                    <rect key="frame" x="148" y="38.5" width="101" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKT-xP-JoF">
+                                                    <rect key="frame" x="148" y="38.5" width="196" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -72,6 +72,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="U3x-2z-jtk" firstAttribute="bottom" secondItem="hTG-XU-jep" secondAttribute="bottomMargin" id="CeJ-iR-lRs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gKT-xP-JoF" secondAttribute="trailing" constant="10" id="el8-kj-Yky"/>
                                                 <constraint firstItem="gKT-xP-JoF" firstAttribute="centerY" secondItem="U3x-2z-jtk" secondAttribute="centerY" id="h03-hh-o9z"/>
                                                 <constraint firstItem="U3x-2z-jtk" firstAttribute="top" secondItem="hTG-XU-jep" secondAttribute="topMargin" id="kVy-I7-1IN"/>
                                                 <constraint firstItem="gKT-xP-JoF" firstAttribute="leading" secondItem="U3x-2z-jtk" secondAttribute="trailing" constant="50" id="s2x-8w-fHQ"/>
