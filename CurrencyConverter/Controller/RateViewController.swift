@@ -36,7 +36,8 @@ class RateViewController: UIViewController {
         
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
-        currencyPickerView.isHidden = true
+       // currencyPickerView.isHidden = true
+        currencyPickerView.alpha = 0
         dismissKeyboardBtn.isHidden = true
     }
     
@@ -52,8 +53,10 @@ class RateViewController: UIViewController {
     //MARK: - ViewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        convertButton.isHidden = true
-        currencyPickerView.isHidden = true
+        //convertButton.isHidden = true
+        convertButton.alpha = 0
+        //currencyPickerView.isHidden = true
+        currencyPickerView.alpha = 0
         dismissKeyboardBtn.isHidden = true
         amountToConvertText.text = ""
         currencyPickerView.selectRow(0, inComponent: 0, animated: true)
@@ -91,12 +94,17 @@ class RateViewController: UIViewController {
     //MARK: - AmountTextEditingChanged
     @IBAction func amountTextEditingChanged(_ sender: UITextField) {
         if amountToConvertText.text == ""{
-            convertButton.isHidden = true
-            currencyPickerView.isHidden = true
+            //convertButton.isHidden = true
+            convertButton.alpha = 0
+            //currencyPickerView.isHidden = true
+            currencyPickerView.alpha = 0
             dismissKeyboardBtn.isHidden = true
         } else if amountToConvertText.text != "" {
-            convertButton.isHidden = true
-            currencyPickerView.isHidden = false
+            //convertButton.isHidden = true
+            convertButton.alpha = 0
+            //currencyPickerView.isHidden = false
+            currencyPickerView.selectRow(0, inComponent: 0, animated: true)
+            currencyPickerView.alpha = 1
             dismissKeyboardBtn.isHidden = false
         }
     }
@@ -117,7 +125,8 @@ class RateViewController: UIViewController {
     //MARK: - TextFieldTouchDown
     @IBAction func textFieldTouchDown(_ sender: UITextField) {
         dismissKeyboardBtn.isHidden = false
-        currencyPickerView.isHidden = true
+        //currencyPickerView.isHidden = true
+        currencyPickerView.alpha = 0
     }
     
     
@@ -176,8 +185,10 @@ extension RateViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         DispatchQueue.main.async {
             if self.currencyName != "UNKNOW" && self.amountToConvertText.text != ""{
                 self.convertButton.isHidden = false
+                self.convertButton.alpha = 1
             } else{
                 self.convertButton.isHidden = true
+                self.convertButton.alpha = 0
             }
         }
     }
