@@ -10,52 +10,6 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-//MARK: - Currency
-class Currency : NSObject {
-    
-    var base : String = ""
-    var rates : String = ""
-    var date : String = ""
-    
-    
-    var BGN : Double = 0.0
-    var NZD : Double = 0.0
-    var ILS : Double = 0.0
-    var RUB : Double = 0.0
-    var CAD : Double = 0.0
-    var USD : Double = 0.0
-    var PHP : Double = 0.0
-    var CHF : Double = 0.0
-    var AUD : Double = 0.0
-    var JPY : Double = 0.0
-    var TRY : Double = 0.0
-    var HKD : Double = 0.0
-    var MYR : Double = 0.0
-    var HRK : Double = 0.0
-    var CZK : Double = 0.0
-    var IDR : Double = 0.0
-    var DKK : Double = 0.0
-    var NOK : Double = 0.0
-    var HUF : Double = 0.0
-    var GBP : Double = 0.0
-    var MXN : Double = 0.0
-    var THB : Double = 0.0
-    var ISK : Double = 0.0
-    var ZAR : Double = 0.0
-    var BRL : Double = 0.0
-    var SGD : Double = 0.0
-    var PLN : Double = 0.0
-    var INR : Double = 0.0
-    var KRW : Double = 0.0
-    var RON : Double = 0.0
-    var CNY : Double = 0.0
-    var SEK : Double = 0.0
-    var EUR : Double = 0.0
-    
-}
-    
-
-
 
 public struct CurrencyModel {
 //MARK: - Currency Array
@@ -162,7 +116,7 @@ public struct CurrencyModel {
         let base = "\(json[0]["base"])"
         let rates = json[0]["rates"]
         var singleRate: [String : Double] = [:]
-        var arrayRate: [[String : Double]] = [[:]]
+        //var arrayRate: [[String : Double]] = [[:]]
         let myCurrency = CurrencyModelClass()
   
         
@@ -171,26 +125,16 @@ public struct CurrencyModel {
                     if let value = Double("\(i.1)"){
                         let risultato = (amount * value).twoDecimalNumbers(place: 3)
                         singleRate.updateValue(risultato, forKey: i.0)
-                        //singleRate[i.0] = risultato
-                        //print(singleRate)
-                        //arrayRate.append(singleRate)
-                        
                     }
                 }
             }
    
-//print("SINGLE DICTONARY",singleRate)
-//        for i in arrayRate{
-//            if i.index(forKey: currency) == currency {
-//                print("YES")
-//            }
-//
-//        }
+
         
         myCurrency.currency = singleRate
         myCurrency.base = base
         myCurrency.date = date
-        myCurrency.arrayCurrency = arrayRate
+        //myCurrency.arrayCurrency = arrayRate
 
         return myCurrency
     }

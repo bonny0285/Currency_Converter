@@ -11,25 +11,26 @@ import UIKit
 class CurrencyViewController: UIViewController {
     
     
+    //MARK: - My IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currencyTimeLabel: UILabel!
     @IBOutlet weak var currencyName: UILabel!
     
     
+    //MARK: - My Variables
     var currencyArray = CurrencyModelClass()
     var arrayRate = [String]()
     var arrayCurrency = [Double]()
-
+    
+    
+    //MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("VIEW",arrayRate)
         
         if #available(iOS 13.0, *) {
             // Always adopt a light interface style.
             overrideUserInterfaceStyle = .light
         }
-       // let vc = RateViewController()
         
         currencyName.text = "From: \(currencyArray.base!)"
         currencyTimeLabel.isHidden = false
@@ -38,14 +39,15 @@ class CurrencyViewController: UIViewController {
         if  currencyArray.currency?.count == 0{
             tableView.tableFooterView = UIView()
         }
-
-        preparaPerDisplayCell(forCurrency: currencyArray)
         
+        preparaPerDisplayCell(forCurrency: currencyArray)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     
+    
+    //MARK: - GetDateAndTime()
     func getDateAndTime () -> String{
         
         let formatter = DateFormatter()
@@ -62,8 +64,8 @@ class CurrencyViewController: UIViewController {
         return myStringafd
     }
     
-
-//MARK: - Back Button Was Pressed
+    
+    //MARK: - Back Button Was Pressed
     @IBAction func backButtonWasPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -73,15 +75,16 @@ class CurrencyViewController: UIViewController {
 
 //MARK: - Extension UITableVIewDelegate UITableViewDataSource
 extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencyArray.currency!.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as! NewCurrencyTableViewCell
-        
-        print(arrayRate[indexPath.row])
         
         cell.setupCell(forImageFlag: arrayRate[indexPath.row], forRate: arrayRate[indexPath.row], forCurrencyName: CurrencyModel.currencyGetNameCurrency(currency: arrayRate[indexPath.row]), forCurrency: arrayCurrency[indexPath.row])
         
@@ -89,11 +92,13 @@ extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
     
+    //MARK: - PreparePerDsiplayCell
     func preparaPerDisplayCell(forCurrency currency: CurrencyModelClass){
         
         for i in currency.currency!{

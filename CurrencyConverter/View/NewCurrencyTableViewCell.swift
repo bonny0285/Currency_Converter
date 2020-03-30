@@ -11,6 +11,7 @@ import UIKit
 class NewCurrencyTableViewCell: UITableViewCell {
 
     
+//MARK: - My IBOutlet
     @IBOutlet weak var imageCurrencyFlag: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
@@ -20,10 +21,11 @@ class NewCurrencyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 
+    
+//MARK: - SetupCell()
     func setupCell(forImageFlag flag: String,forRate rate: String, forCurrencyName currency: String,forCurrency currencyDouble: Double){
         imageCurrencyFlag.image = UIImage.init(named: flag)
         currencyNameLabel.text = "\(currency)"

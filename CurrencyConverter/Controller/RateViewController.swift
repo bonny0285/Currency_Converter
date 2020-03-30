@@ -10,67 +10,74 @@ import UIKit
 
 class RateViewController: UIViewController {
     
+    
+    //MARK: - My IBOutlet
+    
     @IBOutlet weak var currencyPickerView: UIPickerView!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var amountToConvertText: UITextField!
-    
     @IBOutlet weak var dismissKeyboardBtn: UIButton!
     
     
+    //MARK: - My Variables
     public var currencyName: String = ""
     public var currency = CurrencyModelClass()
-    
     public var amount: String?
-
+    
+    
+    //MARK: - ViewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if #available(iOS 13.0, *) {
             // Always adopt a light interface style.
             overrideUserInterfaceStyle = .light
         }
-
+        
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
         dismissKeyboardBtn.isHidden = true
     }
     
     
+    
+    //MARK: - ViewDidAppear()
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         tapGestureRecognize()
-
     }
-
     
     
+    //MARK: - ViewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         convertButton.isHidden = true
         amountToConvertText.text = ""
+        currencyPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
+    
+    //MARK: - IBActions
+    
+    
+    
+    //MARK: - ConvertButtonWasPressed
     @IBAction func convertButtonWasPressed(_ sender: UIButton) {
         let url = "https://api.exchangeratesapi.io/latest?base="
         let parameters : [String : String] = ["base" : currencyName]
         amount = amountToConvertText.text!
         CurrencyModel.getCurrencyData(url: url, parameters: parameters, amount: amount!, currency: currencyName, completion: {
-           // print($0.currency)
             self.currency = $0
-//            let vc = CurrencyViewController()
-//            vc.currencyArray = $0
             self.performSegue(withIdentifier: "segueToMain", sender: self)
-
         })
-        
     }
     
+    
+    //MARK: - PrepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMain"{
             let vc = segue.destination as! CurrencyViewController
             vc.currencyArray = currency
-
         } else {
             print("No segue")
         }
@@ -78,23 +85,7 @@ class RateViewController: UIViewController {
     
     
     
-//
-//    func getCurrencyFromAmount(forCurrency currency: CurrencyModelClass){
-//        print(amountToConvertText.text)
-//        var dizionario: [String : Double] = [:]
-//        var arrayFinale: [[String : Double]] = [[:]]
-//
-//        if let myDict = currency.arrayCurrency{
-//            for i in myDict{
-//               // print(i["EUR"])
-//            }
-//        }
-//
-//    }
-//
-
-    
-    
+    //MARK: - AmountTextEditingChanged
     @IBAction func amountTextEditingChanged(_ sender: UITextField) {
         if amountToConvertText.text == ""{
             convertButton.isHidden = true
@@ -105,41 +96,39 @@ class RateViewController: UIViewController {
         }
     }
     
-
     
+    
+    //MARK: - AmountTextValueChanged
     @IBAction func amountTextValueChanged(_ sender: UITextField) {
         print(#function)
-        print(amount)
     }
     
-    
+    //MARK: - DismissKeyboardButton
     @IBAction func dismissKeyboardButton(_ sender: UIButton) {
         self.amountToConvertText.endEditing(true)
         self.dismissKeyboardBtn.isHidden = true
     }
     
-
-    @IBAction func textFieldTocuhDown(_ sender: UITextField) {
+    //MARK: - TextFieldTouchDown
+    @IBAction func textFieldTouchDown(_ sender: UITextField) {
         dismissKeyboardBtn.isHidden = false
     }
     
     
     
-//MARK: - Tap Gesture Recognize
+    //MARK: - Tap Gesture Recognize
     func tapGestureRecognize(){
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(rimuoviTastiera))
         view.addGestureRecognizer(tap)
-        //currencyTableView.reloadData()
     }
     
     @objc func rimuoviTastiera(){
         self.view.endEditing(true)
         self.amountToConvertText.endEditing(true)
         self.dismissKeyboardBtn.isHidden = true
-        //currencyTableView.reloadData()
     }
     
-
+    
 }
 
 
@@ -176,22 +165,15 @@ extension RateViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         currencyName = CurrencyModel.currencyName(currency: CurrencyModel.currencyArray[row])
-        print(currencyName)
-        
         self.tapGestureRecognize()
         
         DispatchQueue.main.async {
             if self.currencyName != "UNKNOW" && self.amountToConvertText.text != ""{
-                
                 self.convertButton.isHidden = false
             } else{
-                
                 self.convertButton.isHidden = true
             }
         }
-        
-        
-        
     }
     
     
