@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Firebase
 
 class RateViewController: UIViewController {
     
@@ -33,6 +34,9 @@ class RateViewController: UIViewController {
             // Always adopt a light interface style.
             overrideUserInterfaceStyle = .light
         }
+        
+
+        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad", forViewController: self, forText: "Accesso alla prima schermata")
         
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
@@ -74,6 +78,9 @@ class RateViewController: UIViewController {
         amount = amountToConvertText.text!
         CurrencyModel.getCurrencyData(url: url, parameters: parameters, amount: amount!, currency: currencyName, completion: {
             self.currency = $0
+   
+            MyAnalytics.myAnalytics(forEvent: "ConvertButtonWasPressed", forViewController: self, forText: "Customer has pressed convert button")
+            
             self.performSegue(withIdentifier: "segueToMain", sender: self)
         })
     }
@@ -142,6 +149,15 @@ class RateViewController: UIViewController {
         self.amountToConvertText.endEditing(true)
         self.dismissKeyboardBtn.isHidden = true
     }
+    
+    
+//MARK: - MyAnalytics
+//    func myAnalytics(forEvent event: String,forViewController controller: String,forText testo: String){
+//        Analytics.logEvent(event, parameters: [
+//        "name": controller as NSObject,
+//        "full_text": testo as NSObject
+//        ])
+//    }
     
     
 }

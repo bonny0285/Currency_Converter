@@ -7,7 +7,20 @@
 		<key>CurrencyConverter.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>16</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B42E028822B57FC50070C799</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B42E029C22B57FC60070C799</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

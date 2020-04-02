@@ -106,6 +106,7 @@ public struct CurrencyModel {
             case .failure(let error):
                 //self.valutaDaConvertitreTxt.placeholder = "Connection Issue"
                 print(error.localizedDescription)
+                MyAnalytics.myAnalytics(forEvent: "GetCurrencyData", forViewController: nil, forText: "Error: \(error.localizedDescription)")
             }
         }
     }

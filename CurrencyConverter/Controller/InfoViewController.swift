@@ -35,6 +35,8 @@ class InfoViewController: UIViewController {
         tabelView.delegate = self
         tabelView.dataSource = self
         
+        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad", forViewController: self, forText: "Customer check my info")
+        
         let cell = tabelView.dequeueReusableCell(withIdentifier: "infoCell") as! InfoTableViewCell
         roundImage(forImage: cell.imageApp)
         
@@ -102,6 +104,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        MyAnalytics.myAnalytics(forEvent: "DidSelectRowAt", forViewController: self, forText: "Customer has checked \(nomeAppArray[indexPath.row])")
         openAppStore(fornumber: indexPath.row)
     }
     

@@ -21,6 +21,8 @@
 		B49F80C5243208F100DD299D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F80C4243208F100DD299D /* InfoViewController.swift */; };
 		B49F80C724320BE600DD299D /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F80C624320BE600DD299D /* InfoTableViewCell.swift */; };
 		B49F80C92432153D00DD299D /* myImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F80C82432153D00DD299D /* myImage.swift */; };
+		B4A288BC24360EBE002E857F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4A288BB24360EBD002E857F /* GoogleService-Info.plist */; };
+		B4A288BE24361DDE002E857F /* MyAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A288BD24361DDE002E857F /* MyAnalytics.swift */; };
 		B4AD1289242FEA7B00DB24A6 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD1288242FEA7B00DB24A6 /* RateViewController.swift */; };
 		B4AD128B24301B7700DB24A6 /* CurrencyModelStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD128A24301B7700DB24A6 /* CurrencyModelStruct.swift */; };
 		B4AD128D24302A4800DB24A6 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD128C24302A4800DB24A6 /* CurrencyViewController.swift */; };
@@ -59,6 +61,8 @@
 		B49F80C4243208F100DD299D /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		B49F80C624320BE600DD299D /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		B49F80C82432153D00DD299D /* myImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myImage.swift; sourceTree = "<group>"; };
+		B4A288BB24360EBD002E857F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B4A288BD24361DDE002E857F /* MyAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAnalytics.swift; path = CurrencyConverter/Assets.xcassets/MyAnalytics.swift; sourceTree = SOURCE_ROOT; };
 		B4AD1288242FEA7B00DB24A6 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		B4AD128A24301B7700DB24A6 /* CurrencyModelStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModelStruct.swift; sourceTree = "<group>"; };
 		B4AD128C24302A4800DB24A6 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				B42E029022B57FC50070C799 /* Main.storyboard */,
 				B42E029322B57FC60070C799 /* Assets.xcassets */,
 				B42E029522B57FC60070C799 /* LaunchScreen.storyboard */,
+				B4A288BB24360EBD002E857F /* GoogleService-Info.plist */,
 				B42E029822B57FC60070C799 /* Info.plist */,
 			);
 			path = CurrencyConverter;
@@ -143,6 +148,7 @@
 			children = (
 				B42E02AF22B5821F0070C799 /* CurrencyModel.swift */,
 				B4AD128A24301B7700DB24A6 /* CurrencyModelStruct.swift */,
+				B4A288BD24361DDE002E857F /* MyAnalytics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42E029722B57FC60070C799 /* LaunchScreen.storyboard in Resources */,
+				B4A288BC24360EBE002E857F /* GoogleService-Info.plist in Resources */,
 				B42E029422B57FC60070C799 /* Assets.xcassets in Resources */,
 				B42E029222B57FC50070C799 /* Main.storyboard in Resources */,
 			);
@@ -361,6 +368,7 @@
 				B4AD128D24302A4800DB24A6 /* CurrencyViewController.swift in Sources */,
 				B4AD128B24301B7700DB24A6 /* CurrencyModelStruct.swift in Sources */,
 				B49F80C5243208F100DD299D /* InfoViewController.swift in Sources */,
+				B4A288BE24361DDE002E857F /* MyAnalytics.swift in Sources */,
 				B4AD1289242FEA7B00DB24A6 /* RateViewController.swift in Sources */,
 				B42E02B022B5821F0070C799 /* CurrencyModel.swift in Sources */,
 				B49F80C12430CF4200DD299D /* Extension.swift in Sources */,
@@ -535,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.18;
+				MARKETING_VERSION = 1.0.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wordpress.massimilianobonafedeiosdeveloper.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -555,7 +563,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.18;
+				MARKETING_VERSION = 1.0.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wordpress.massimilianobonafedeiosdeveloper.CurrencyConverter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

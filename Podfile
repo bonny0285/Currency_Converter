@@ -8,7 +8,8 @@ target 'CurrencyConverter' do
   # Pods for CurrencyConverter
 
 	pod 'SwiftyJSON'
-   	pod 'Alamofire'
+  	pod 'Alamofire'
+	pod 'Firebase/Analytics'
 
   target 'CurrencyConverterTests' do
     inherit! :search_paths

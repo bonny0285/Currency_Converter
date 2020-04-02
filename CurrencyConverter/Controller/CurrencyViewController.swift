@@ -40,11 +40,20 @@ class CurrencyViewController: UIViewController {
             tableView.tableFooterView = UIView()
         }
         
+        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad", forViewController: self, forText: "Customer check the currency table view")
+        
+        MyAnalytics.myAnalytics(forEvent: "User Base", forViewController: self, forText: "Customer currency is: \(currencyArray.base!)")
+        
         preparaPerDisplayCell(forCurrency: currencyArray)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        MyAnalytics.myAnalytics(forEvent: "ViewWillAppear", forViewController: self, forText: "Customer check again the currency table view")
+    }
     
     
     //MARK: - GetDateAndTime()
@@ -67,8 +76,13 @@ class CurrencyViewController: UIViewController {
     
     //MARK: - Back Button Was Pressed
     @IBAction func backButtonWasPressed(_ sender: UIButton) {
+        MyAnalytics.myAnalytics(forEvent: "Back Button Was Pressed", forViewController: self, forText: "Customer has pressed the back button")
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    
+
     
 }
 
