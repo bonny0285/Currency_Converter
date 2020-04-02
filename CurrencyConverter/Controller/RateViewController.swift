@@ -36,7 +36,7 @@ class RateViewController: UIViewController {
         }
         
 
-        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad", forViewController: self, forText: "Accesso alla prima schermata")
+        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad RateViewCotroller", forViewController: self, forText: "Accesso alla prima schermata")
         
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
@@ -80,6 +80,8 @@ class RateViewController: UIViewController {
             self.currency = $0
    
             MyAnalytics.myAnalytics(forEvent: "ConvertButtonWasPressed", forViewController: self, forText: "Customer has pressed convert button")
+            
+            MyAnalytics.myAnalytics(forEvent: "Customer choose", forViewController: self, forText: "Customer check \(self.currencyName)")
             
             self.performSegue(withIdentifier: "segueToMain", sender: self)
         })

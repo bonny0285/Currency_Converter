@@ -40,7 +40,7 @@ class CurrencyViewController: UIViewController {
             tableView.tableFooterView = UIView()
         }
         
-        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad", forViewController: self, forText: "Customer check the currency table view")
+        MyAnalytics.myAnalytics(forEvent: "ViewDidLoad CurrencyViewController", forViewController: self, forText: "Customer check the currency table view")
         
         MyAnalytics.myAnalytics(forEvent: "User Base", forViewController: self, forText: "Customer currency is: \(currencyArray.base!)")
         
@@ -52,7 +52,7 @@ class CurrencyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        MyAnalytics.myAnalytics(forEvent: "ViewWillAppear", forViewController: self, forText: "Customer check again the currency table view")
+        MyAnalytics.myAnalytics(forEvent: "ViewWillAppear CurrencyViewController", forViewController: self, forText: "Customer check again the currency table view")
     }
     
     
