@@ -24,7 +24,8 @@ class RateViewController: UIViewController {
     public var currencyName: String = ""
     public var currency = CurrencyModelClass()
     public var amount: String?
-    
+    var currencyManager = CurrencyManager()
+    var newCurrency: CurrencyClass?
     
     //MARK: - ViewDidLoad()
     override func viewDidLoad() {
@@ -40,7 +41,6 @@ class RateViewController: UIViewController {
         
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
-       // currencyPickerView.isHidden = true
         currencyPickerView.alpha = 0
         dismissKeyboardBtn.isHidden = true
     }
@@ -57,9 +57,7 @@ class RateViewController: UIViewController {
     //MARK: - ViewWillAppear()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        //convertButton.isHidden = true
         convertButton.alpha = 0
-        //currencyPickerView.isHidden = true
         currencyPickerView.alpha = 0
         dismissKeyboardBtn.isHidden = true
         amountToConvertText.text = ""
@@ -73,18 +71,15 @@ class RateViewController: UIViewController {
     
     //MARK: - ConvertButtonWasPressed
     @IBAction func convertButtonWasPressed(_ sender: UIButton) {
-        let url = "https://api.exchangeratesapi.io/latest?base="
-        let parameters : [String : String] = ["base" : currencyName]
         amount = amountToConvertText.text!
-        CurrencyModel.getCurrencyData(url: url, parameters: parameters, amount: amount!, currency: currencyName, completion: {
-            self.currency = $0
-   
-            MyAnalytics.myAnalytics(forEvent: "ConvertButtonWasPressed", forViewController: self, forText: "Customer has pressed convert button")
+        currencyManager.getCurrency(currency: currencyName, ammount: amount!) {
+            self.newCurrency = $0
             
+            MyAnalytics.myAnalytics(forEvent: "ConvertButtonWasPressed", forViewController: self, forText: "Customer has pressed convert button")
             MyAnalytics.myAnalytics(forEvent: "Customer choose", forViewController: self, forText: "Customer check \(self.currencyName)")
             
-            self.performSegue(withIdentifier: "segueToMain", sender: self)
-        })
+            self.performSegue(withIdentifier: "segueToMain", sender: self.newCurrency)
+        }
     }
     
     
@@ -92,7 +87,7 @@ class RateViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToMain"{
             let vc = segue.destination as! CurrencyViewController
-            vc.currencyArray = currency
+            vc.newCurrency = sender as? CurrencyClass
         } else {
             print("No segue")
         }
@@ -103,15 +98,11 @@ class RateViewController: UIViewController {
     //MARK: - AmountTextEditingChanged
     @IBAction func amountTextEditingChanged(_ sender: UITextField) {
         if amountToConvertText.text == ""{
-            //convertButton.isHidden = true
             convertButton.alpha = 0
-            //currencyPickerView.isHidden = true
             currencyPickerView.alpha = 0
             dismissKeyboardBtn.isHidden = true
         } else if amountToConvertText.text != "" {
-            //convertButton.isHidden = true
             convertButton.alpha = 0
-            //currencyPickerView.isHidden = false
             currencyPickerView.selectRow(0, inComponent: 0, animated: true)
             currencyPickerView.alpha = 1
             dismissKeyboardBtn.isHidden = false
@@ -134,7 +125,6 @@ class RateViewController: UIViewController {
     //MARK: - TextFieldTouchDown
     @IBAction func textFieldTouchDown(_ sender: UITextField) {
         dismissKeyboardBtn.isHidden = false
-        //currencyPickerView.isHidden = true
         currencyPickerView.alpha = 0
     }
     
@@ -151,17 +141,7 @@ class RateViewController: UIViewController {
         self.amountToConvertText.endEditing(true)
         self.dismissKeyboardBtn.isHidden = true
     }
-    
-    
-//MARK: - MyAnalytics
-//    func myAnalytics(forEvent event: String,forViewController controller: String,forText testo: String){
-//        Analytics.logEvent(event, parameters: [
-//        "name": controller as NSObject,
-//        "full_text": testo as NSObject
-//        ])
-//    }
-    
-    
+ 
 }
 
 
@@ -174,21 +154,23 @@ extension RateViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CurrencyModel.currencyArray.count
+        currencyManager.currencies.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CurrencyModel.currencyArray[row]
+        currencyManager.currencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel: UILabel? = (view as? UILabel)
+        
         if pickerLabel == nil {
             pickerLabel = UILabel()
             pickerLabel?.font = UIFont(name: "Avenir", size: 30)
             pickerLabel?.textAlignment = .center
         }
-        pickerLabel?.text = CurrencyModel.currencyArray[row]
+        
+        pickerLabel?.text = currencyManager.currencies[row]
         pickerLabel?.textColor = UIColor.white
         
         return pickerLabel!
@@ -197,7 +179,7 @@ extension RateViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        currencyName = CurrencyModel.currencyName(currency: CurrencyModel.currencyArray[row])
+        currencyName = currencyManager.currency.currencyName(currencyManager.currencies[row])
         self.tapGestureRecognize()
         
         DispatchQueue.main.async {

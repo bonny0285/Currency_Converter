@@ -21,3 +21,20 @@ public class CurrencyModelClass{
     
 }
 
+
+
+class CurrencyClass {
+    var base: String
+    var rates: String?
+    var date: String
+    var currency : [String : Double]?
+    
+    
+    init(base: String, rates: String?, date: String, currency : [String : Double]?
+) {
+        self.base = base
+        self.rates = rates
+        self.date = date
+        self.currency = currency
+    }
+}

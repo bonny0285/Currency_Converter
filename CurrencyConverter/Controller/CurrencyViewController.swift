@@ -11,14 +11,15 @@ import UIKit
 class CurrencyViewController: UIViewController {
     
     
-    //MARK: - My IBOutlets
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currencyTimeLabel: UILabel!
     @IBOutlet weak var currencyName: UILabel!
     
     
-    //MARK: - My Variables
-    var currencyArray = CurrencyModelClass()
+    //MARK: - Properies
+
+    var newCurrency: CurrencyClass?
     var arrayRate = [String]()
     var arrayCurrency = [Double]()
     
@@ -32,27 +33,30 @@ class CurrencyViewController: UIViewController {
             overrideUserInterfaceStyle = .light
         }
         
-        currencyName.text = "From: \(currencyArray.base!)"
+        currencyName.text = "From: \(newCurrency?.base ?? "")"
         currencyTimeLabel.isHidden = false
         currencyTimeLabel.text = "Currency Time: \(getDateAndTime())"
         
-        if  currencyArray.currency?.count == 0{
+        if newCurrency?.currency?.count == 0 {
             tableView.tableFooterView = UIView()
         }
-        
+
         MyAnalytics.myAnalytics(forEvent: "ViewDidLoad CurrencyViewController", forViewController: self, forText: "Customer check the currency table view")
         
-        MyAnalytics.myAnalytics(forEvent: "User Base", forViewController: self, forText: "Customer currency is: \(currencyArray.base!)")
+        MyAnalytics.myAnalytics(forEvent: "User Base", forViewController: self, forText: "Customer currency is: \(newCurrency?.base ?? "")")
         
-        preparaPerDisplayCell(forCurrency: currencyArray)
-        tableView.delegate = self
-        tableView.dataSource = self
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         MyAnalytics.myAnalytics(forEvent: "ViewWillAppear CurrencyViewController", forViewController: self, forText: "Customer check again the currency table view")
+        
+        setupCell(newCurrency!)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
     }
     
     
@@ -92,7 +96,8 @@ extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyArray.currency!.count
+        return newCurrency?.currency?.count ?? 0
+        
     }
     
     
@@ -113,13 +118,12 @@ extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     //MARK: - PreparePerDsiplayCell
-    func preparaPerDisplayCell(forCurrency currency: CurrencyModelClass){
-        
+    
+    func setupCell(_ currency: CurrencyClass) {
         for i in currency.currency!{
             arrayRate.append(i.key)
             arrayCurrency.append(i.value)
         }
     }
-    
-    
+
 }
